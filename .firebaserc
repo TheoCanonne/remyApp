@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "remyapp-d83f0": {
+      "hosting": {
+        "remy": [
+          "remyapp-d83f0"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "remyapp-d83f0"
+  }
+}
