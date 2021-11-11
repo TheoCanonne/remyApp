@@ -14,10 +14,23 @@ export interface ITest {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public res: Observable<ITest[]>;
+  public allValues: Observable<ITest[]> | null;
   constructor(private db: AngularFirestore) {
-    this.res = this.db.collection<ITest>('test').get().pipe(
+    this.allValues = null;
+    this.getAll();
+  }
+
+  getAll(): void {
+    this.allValues = this.db.collection<ITest>('test').get().pipe(
       map(e => e.docs.map(e => ({ id: e.id, ...e.data() })))
     );
+  }
+  add() {
+    for (let i = 2; i < 21; i++) {
+      this.db.collection<ITest>('test').add({
+        title: 'Titre ' + i,
+        desc: 'Desc ' + i,
+      })
+    }
   }
 }
