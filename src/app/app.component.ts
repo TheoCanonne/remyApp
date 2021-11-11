@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export interface ITest {
@@ -20,14 +20,4 @@ export class AppComponent {
       map(e => e.docs.map(e => ({ id: e.id, ...e.data() })))
     );
   }
-
 }
-
-
-/**
- map(e =>
-        e.docs.map(e => {
-          return { id: e.id, ...e.data() } as ITest
-         })
-         )
- */
